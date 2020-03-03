@@ -1,0 +1,12 @@
+ion-content {
+  --padding-top: 16px;
+
+  .add-photo-wrapper {
+    justify-content: center;
+  }
+
+  .user-image {
+    --size: 100px;
+    margin: auto;
+  }
+}

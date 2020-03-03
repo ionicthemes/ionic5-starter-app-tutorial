@@ -1,0 +1,40 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary">
+        Edit
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="contact">
+  <ion-row>
+    <ion-col class="content-col">
+      <ion-thumbnail class="user-image">
+        <img src="/assets/avatar.png">
+      </ion-thumbnail>
+      <ion-text color="dark">
+        <h2 class="user-name">{{contact.firstName}} {{contact.lastName}}</h2>
+      </ion-text>
+
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Phone</ion-label>
+          <ion-input color="primary" disabled="true">{{contact.phone}}</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input color="primary" disabled="true">{{contact.email}}</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Category</ion-label>
+          <ion-input color="primary" disabled="true">{{contact.category}}</ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>

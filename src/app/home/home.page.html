@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Contacts
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,31 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Contacts</ion-title>
+      <ion-buttons slot="primary">
+        <ion-button color="primary" (click)="openNewContactModal()">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-segment (ionChange)="filterContacts($event)">
+    <ion-segment-button value="All" checked>
+      All
+    </ion-segment-button>
+    <ion-segment-button value="Friend">
+      Friends
+    </ion-segment-button>
+    <ion-segment-button value="Family">
+      Family
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list>
+    <ion-item *ngFor="let contact of contacts" [routerLink]="'/contact-details/' + contact.id">
+      <ion-label>{{ contact.firstName }} {{ contact.lastName }}</ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
