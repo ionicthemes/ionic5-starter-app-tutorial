@@ -14,3 +14,15 @@ ion-content {
     text-align: center;
   }
 }
+
+
+ion-icon {
+  // default: not-fav
+  &[name="heart"] {
+    fill: grey;
+  }
+
+  &[name="heart"].fav {
+    fill: red;
+  }
+}

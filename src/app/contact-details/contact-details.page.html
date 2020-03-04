@@ -4,6 +4,9 @@
       <ion-back-button text="Contacts" defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
+      <ion-button (click)="fav()">
+        <ion-icon #favIcon name="heart"></ion-icon>
+      </ion-button>
       <ion-button color="primary" *ngIf="contact" [routerLink]="'/update-contact/' + contact.id">
         Edit
       </ion-button>
