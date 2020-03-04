@@ -26,8 +26,8 @@ export class UpdateContactPage implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.contact = this.dataService.getContactById(parseInt(id, 10));
 
-    // if the contact doesn't exists, return to home
-    if(!this.contact) {
+    // if the contact doesn't exists, return to home page
+    if (!this.contact) {
       this.router.navigate(['/home']);
     }
 
@@ -48,10 +48,20 @@ export class UpdateContactPage implements OnInit {
     this.updateForm.onSubmit(undefined);
   }
 
-  updateContact(values: any) {
+  async updateContact(values: any) {
     // copy all the form values into the contact to be updated
     let updatedContact: Contact = { id: this.contact.id, ...values };
-    this.dataService.updateContact(updatedContact);
+    const contactUpdated = await this.dataService.updateContact(updatedContact);
+    if (contactUpdated != null) {
+      this.router.navigate(['/home']);
+    }
   }
 
+  async deleteContact(contactId: number) {
+    const contactDeleted = await this.dataService.deleteContact(contactId);
+
+    if (contactDeleted!= null) {
+      this.router.navigate(['/home']);
+    }
+  }
 }

@@ -14,17 +14,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="contact">
-  <ion-thumbnail class="user-image">
-    <img src="/assets/avatar.png">
-  </ion-thumbnail>
-
+  <ion-row>
+    <ion-thumbnail class="user-image">
+      <img src="/assets/avatar.png">
+    </ion-thumbnail>
+  </ion-row>
   <ion-row class="add-photo-wrapper">
     <ion-button fill="clear">Add Photo</ion-button>
   </ion-row>
 
   <form [formGroup]="updateContactForm" #updateForm="ngForm" (ngSubmit)="updateContact(updateContactForm.value)" *ngIf="contact">
-    <ion-list>
-      <ion-item>
+    <ion-list lines="full">
+      <ion-item lines="full">
         <ion-input placeholder="First name" inputMode="text" clearInput="true" formControlName="firstName" required></ion-input>
       </ion-item>
       <ion-item>
@@ -36,12 +37,19 @@
       <ion-item>
         <ion-input placeholder="Phone" inputMode="tel" clearInput="true" formControlName="phone" required></ion-input>
       </ion-item>
+      <ion-item-divider></ion-item-divider>
       <ion-item>
         <ion-label>Category</ion-label>
         <ion-select placeholder="Select One" formControlName="category">
           <ion-select-option value="Family">Family</ion-select-option>
           <ion-select-option value="Friend">Friend</ion-select-option>
         </ion-select>
+      </ion-item>
+      <ion-item-divider></ion-item-divider>
+      <ion-item button="true" detail="false" (click)="deleteContact(contact.id)">
+        <ion-label color="danger">
+          Delete contact
+        </ion-label>
       </ion-item>
     </ion-list>
   </form>

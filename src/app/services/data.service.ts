@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Contact, ContactCategory } from '../models/contact';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -52,9 +51,9 @@ export class DataService {
 
   private lastId: number = 5;
 
-  constructor(private router: Router) {}
+  constructor() {}
 
-  getContacts(): Contact[] {
+  getContacts() {
     return this.contacts;
   }
 
@@ -73,10 +72,14 @@ export class DataService {
     this.contacts.push(contact);
   }
 
-  updateContact(contact: Contact) {
+  updateContact(contact: Contact): Contact {
     let itemIndex = this.contacts.findIndex(item => item.id == contact.id);
     this.contacts[itemIndex] = contact;
+    return contact;
+  }
 
-    this.router.navigate(['/home']);
+  deleteContact(id: number): Contact {
+    let itemIndex = this.contacts.findIndex(item => item.id == id);
+    return this.contacts.splice(itemIndex, 1)[0];
   }
 }

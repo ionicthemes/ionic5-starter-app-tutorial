@@ -25,15 +25,15 @@ export class HomePage {
     this.loadContacts(this.currentSegment);
   }
 
-  filterContacts(ev: any) {
-    let selectedCategory = ev.detail.value;
+  filterContacts(event: any) {
+    let selectedCategory = event.detail.value;
     this.currentSegment = selectedCategory;
 
     this.loadContacts(selectedCategory);
   }
 
   loadContacts(category: string) {
-    if(category === 'All'){
+    if (category === 'All') {
       this.contacts = this.dataService.getContacts();
     } else {
       this.contacts = this.dataService.getContactsByCategory(category);
