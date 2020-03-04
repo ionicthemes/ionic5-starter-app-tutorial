@@ -4,7 +4,7 @@
       Contacts
     </ion-title>
     <ion-buttons collapse="true" slot="end">
-      <ion-button color="primary" (click)="openNewContactModal()">
+      <ion-button (click)="openNewContactModal()">
         <ion-icon slot="icon-only" name="add-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -13,7 +13,7 @@
 
 <!-- https://ionicframework.com/docs/api/title#collapsible-large-titles -->
 <ion-content fullscreen="true">
-  <ion-header collapse="condense">
+  <ion-header collapse="condense" class="ion-no-border">
     <ion-toolbar>
       <ion-title size="large">Contacts</ion-title>
       <ion-buttons collapse="true" slot="end">
