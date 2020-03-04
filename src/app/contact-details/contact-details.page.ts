@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 import { DataService } from '../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../models/contact';
-import { IonIcon, Animation, AnimationController } from '@ionic/angular';
+import { AnimationController } from '@ionic/angular';
+import { Animation } from '@ionic/core';
 
 @Component({
   selector: 'app-contact-details',
@@ -41,9 +42,6 @@ export class ContactDetailsPage implements OnInit, AfterViewInit {
     this.favOnAnimation = this.animationCtrl.create()
     .addElement(this.favIcon.nativeElement)
     .duration(300)
-    // .beforeStyles({
-    //   fill: 'grey'
-    // })
     .afterStyles({
       fill: 'red'
     })
@@ -58,9 +56,6 @@ export class ContactDetailsPage implements OnInit, AfterViewInit {
     this.favOffAnimation = this.animationCtrl.create()
     .addElement(this.favIcon.nativeElement)
     .duration(500)
-    // .beforeStyles({
-    //   fill: 'red'
-    // })
     .afterStyles({
       fill: 'grey'
     })
