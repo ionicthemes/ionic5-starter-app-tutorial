@@ -1,57 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Contact, ContactCategory } from '../models/contact';
+import { Contact } from '../models/contact';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  public contacts: Contact[] = [
-    {
-      firstName: 'Beatriz',
-      lastName: "Aragon",
-      id: 1,
-      phone: '+598 99123123',
-      email: 'contact@ionicthemes.com',
-      category: ContactCategory.FAMILY
-    },
-    {
-      firstName: 'Marcelo',
-      lastName: "Graus",
-      id: 2,
-      phone: '+598 99123123',
-      email: 'contact@ionicthemes.com',
-      category: ContactCategory.FRIEND
-    },
-    {
-      firstName: 'Miguel',
-      lastName: "Pera",
-      id: 3,
-      phone: '+598 99123123',
-      email: 'contact@ionicthemes.com',
-      category: ContactCategory.FAMILY
-    },
-    {
-      firstName: 'Dayana',
-      lastName: "Arroz",
-      id: 4,
-      phone: '+598 99123123',
-      email: 'contact@ionicthemes.com',
-      category: ContactCategory.FRIEND
-    },
-    {
-      firstName: 'Luis',
-      lastName: "Pou",
-      id: 5,
-      phone: '+598 99123123',
-      email: 'contact@ionicthemes.com',
-      category: ContactCategory.FRIEND
-    }
-  ]
+  public contacts: Contact[];
 
-  private lastId: number = 5;
+  private lastId: number = 19;
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+    this.http.get<Contact[]>('./assets/contacts.json')
+    .subscribe((contacts: Contact[]) => {
+      this.contacts = contacts;
+    });
+  }
 
   getContacts() {
     return this.contacts;
