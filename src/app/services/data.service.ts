@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Contact, ContactCategory } from '../models/contact';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -46,10 +47,12 @@ export class DataService {
       phone: '+598 99123123',
       email: 'contact@ionicthemes.com',
       category: ContactCategory.FRIEND
-    },
+    }
   ]
 
-  constructor() { }
+  private lastId: number = 5;
+
+  constructor(private router: Router) {}
 
   getContacts(): Contact[] {
     return this.contacts;
@@ -61,5 +64,19 @@ export class DataService {
 
   getContactById(id: number): Contact {
     return this.contacts.find(contact => contact.id == id);
+  }
+
+  createContact(contact: Contact) {
+    contact.id = this.lastId + 1;
+    // increment lastId value
+    this.lastId = this.lastId + 1;
+    this.contacts.push(contact);
+  }
+
+  updateContact(contact: Contact) {
+    let itemIndex = this.contacts.findIndex(item => item.id == contact.id);
+    this.contacts[itemIndex] = contact;
+
+    this.router.navigate(['/home']);
   }
 }

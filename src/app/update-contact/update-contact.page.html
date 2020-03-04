@@ -1,20 +1,19 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>New Contact</ion-title>
     <ion-buttons slot="start">
-      <ion-button color="primary" (click)="dismissModal()">
+      <ion-button color="primary" [routerLink]="'/contact-details/' + contact.id">
         Cancel
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button color="primary" [disabled]="!createContactForm.valid" (click)="submitForm()">
+      <ion-button strong="true" color="primary" [disabled]="!updateContactForm.valid || !formIsEdited" (click)="submitForm()">
         Done
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="contact">
   <ion-thumbnail class="user-image">
     <img src="/assets/avatar.png">
   </ion-thumbnail>
@@ -23,7 +22,7 @@
     <ion-button fill="clear">Add Photo</ion-button>
   </ion-row>
 
-  <form [formGroup]="createContactForm" #createForm="ngForm" (ngSubmit)="createContact(createContactForm.value)">
+  <form [formGroup]="updateContactForm" #updateForm="ngForm" (ngSubmit)="updateContact(updateContactForm.value)" *ngIf="contact">
     <ion-list>
       <ion-item>
         <ion-input placeholder="First name" inputMode="text" clearInput="true" formControlName="firstName" required></ion-input>

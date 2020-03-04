@@ -1,10 +1,10 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button text="Contacts" defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button color="primary">
+      <ion-button color="primary" *ngIf="contact" [routerLink]="'/update-contact/' + contact.id">
         Edit
       </ion-button>
     </ion-buttons>
@@ -24,15 +24,15 @@
       <ion-list>
         <ion-item>
           <ion-label position="stacked">Phone</ion-label>
-          <ion-input color="primary" disabled="true">{{contact.phone}}</ion-input>
+          <ion-input color="primary" readonly="true">{{contact.phone}}</ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Email</ion-label>
-          <ion-input color="primary" disabled="true">{{contact.email}}</ion-input>
+          <ion-input color="primary" readonly="true">{{contact.email}}</ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Category</ion-label>
-          <ion-input color="primary" disabled="true">{{contact.category}}</ion-input>
+          <ion-input color="primary" readonly="true">{{contact.category}}</ion-input>
         </ion-item>
       </ion-list>
     </ion-col>

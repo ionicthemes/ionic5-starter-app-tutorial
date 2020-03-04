@@ -11,6 +11,7 @@ import { NewContactPage } from '../new-contact/new-contact.page';
 })
 export class HomePage {
   public contacts: Contact[];
+  public currentSegment: string = "All";
 
   constructor(
     private dataService: DataService,
@@ -20,16 +21,24 @@ export class HomePage {
     this.contacts = this.dataService.getContacts();
   }
 
-  filterContacts(ev: any) {
-    let selectedCategory = ev.detail.value;
-
-    if(selectedCategory === 'All'){
-      this.contacts = this.dataService.getContacts();
-    } else {
-      this.contacts = this.dataService.getContactsByCategory(selectedCategory);
-    }
+  ionViewWillEnter() {
+    this.loadContacts(this.currentSegment);
   }
 
+  filterContacts(ev: any) {
+    let selectedCategory = ev.detail.value;
+    this.currentSegment = selectedCategory;
+
+    this.loadContacts(selectedCategory);
+  }
+
+  loadContacts(category: string) {
+    if(category === 'All'){
+      this.contacts = this.dataService.getContacts();
+    } else {
+      this.contacts = this.dataService.getContactsByCategory(category);
+    }
+  }
 
   async openNewContactModal() {
     const modal = await this.modalController.create({
@@ -37,6 +46,11 @@ export class HomePage {
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl
     });
+
+    modal.onWillDismiss().then(() => {
+      this.loadContacts(this.currentSegment);
+    });
+
     return await modal.present();
   }
 }
