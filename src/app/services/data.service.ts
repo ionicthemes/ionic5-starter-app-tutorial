@@ -1,33 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Contact } from '../models/contact';
 import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  public contacts: Contact[];
+  private contacts: Contact[];
 
-  private lastId: number = 19;
+  private lastId: number = 20;
 
-  constructor(private http: HttpClient) {
-    this.http.get<Contact[]>('./assets/contacts.json')
-    .subscribe((contacts: Contact[]) => {
-      this.contacts = contacts;
-    });
+  constructor(private http: HttpClient) {}
+
+  getContacts(): Observable<Contact[]> {
+    if (this.contacts) {
+      return of(this.contacts);
+    } else {
+      // fetch contacts
+      return this.http.get<Contact[]>('./assets/contacts.json')
+      .pipe(tap(contacts => this.contacts = contacts));
+    }
   }
 
-  getContacts() {
-    return this.contacts;
+  getContactsByCategory(category: string): Observable<Contact[]> {
+    return this.getContacts().pipe(map(contacts => contacts.filter(contact => contact.category == category)));
   }
 
-  getContactsByCategory(category: string): Contact[] {
-    return this.contacts.filter(x => x.category == category);
-  }
-
-  getContactById(id: number): Contact {
-    return this.contacts.find(contact => contact.id == id);
+  getContactById(id: number): Observable<Contact> {
+    return this.getContacts().pipe(map(contacts => contacts.find(contact => contact.id == id)));
   }
 
   createContact(contact: Contact) {

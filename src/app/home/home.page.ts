@@ -3,6 +3,7 @@ import { DataService } from '../services/data.service';
 import { Contact } from '../models/contact';
 import { ModalController, IonRouterOutlet } from '@ionic/angular';
 import { NewContactPage } from '../new-contact/new-contact.page';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { NewContactPage } from '../new-contact/new-contact.page';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public contacts: Contact[];
+  public contacts: Observable<Contact[]>;
   public currentSegment: string = "All";
 
   constructor(

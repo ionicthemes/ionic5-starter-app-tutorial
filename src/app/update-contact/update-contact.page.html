@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<ion-header class="ion-no-border" *ngIf="contact">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button color="primary" [routerLink]="'/contact-details/' + contact.id">

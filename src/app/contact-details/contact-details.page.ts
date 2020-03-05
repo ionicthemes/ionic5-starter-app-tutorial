@@ -28,12 +28,15 @@ export class ContactDetailsPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.contact = this.dataService.getContactById(parseInt(id, 10));
-
-    // if the contact doesn't exists, return to home page
-    if (!this.contact) {
-      this.router.navigate(['/home']);
-    }
+    this.dataService.getContactById(parseInt(id, 10))
+    .subscribe(contact => {
+      // if the contact doesn't exists, return to home page
+      if (!contact) {
+        this.router.navigate(['/home']);
+      } else {
+        this.contact = contact;
+      }
+    });
   }
 
   ngAfterViewInit() {

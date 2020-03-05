@@ -1,19 +1,11 @@
 [
   {
-    "id": 0,
+    "id": 1,
     "firstName": "Adeline",
     "lastName": "Torres",
     "email": "adeline.torres@example.tv",
     "phone": "+1 (887) 512-3630",
     "category": "Family"
-  },
-  {
-    "id": 1,
-    "firstName": "Barlow",
-    "lastName": "Santana",
-    "email": "barlow.santana@example.ca",
-    "phone": "+1 (988) 598-3584",
-    "category": "Friend"
   },
   {
     "id": 2,
@@ -158,5 +150,13 @@
     "email": "mccoy.ortega@example.com",
     "phone": "+1 (883) 588-2107",
     "category": "Family"
+  },
+  {
+    "id": 20,
+    "firstName": "Barlow",
+    "lastName": "Santana",
+    "email": "barlow.santana@example.ca",
+    "phone": "+1 (988) 598-3584",
+    "category": "Friend"
   }
 ]

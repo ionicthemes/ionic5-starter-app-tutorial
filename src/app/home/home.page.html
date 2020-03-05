@@ -37,7 +37,7 @@
   </ion-segment>
 
   <ion-list>
-    <ion-item *ngFor="let contact of contacts" [routerLink]="'/contact-details/' + contact.id">
+    <ion-item *ngFor="let contact of contacts | async" [routerLink]="'/contact-details/' + contact.id">
       <ion-label>{{ contact.firstName }} {{ contact.lastName }}</ion-label>
     </ion-item>
   </ion-list>

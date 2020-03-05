@@ -24,24 +24,28 @@ export class UpdateContactPage implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.contact = this.dataService.getContactById(parseInt(id, 10));
 
-    // if the contact doesn't exists, return to home page
-    if (!this.contact) {
-      this.router.navigate(['/home']);
-    }
+    this.dataService.getContactById(parseInt(id, 10))
+    .subscribe(contact => {
+      // if the contact doesn't exists, return to home page
+      if (!contact) {
+        this.router.navigate(['/home']);
+      } else {
+        this.contact = contact;
 
-    this.updateContactForm = new FormGroup({
-      'firstName': new FormControl(this.contact.firstName, Validators.required),
-      'lastName': new FormControl(this.contact.lastName, Validators.required),
-      'email': new FormControl(this.contact.email),
-      'phone': new FormControl(this.contact.phone, Validators.required),
-      'category': new FormControl(this.contact.category, Validators.required)
+        this.updateContactForm = new FormGroup({
+          'firstName': new FormControl(this.contact.firstName, Validators.required),
+          'lastName': new FormControl(this.contact.lastName, Validators.required),
+          'email': new FormControl(this.contact.email),
+          'phone': new FormControl(this.contact.phone, Validators.required),
+          'category': new FormControl(this.contact.category, Validators.required)
+        });
+
+        this.updateContactForm.valueChanges.subscribe(values => {
+          this.formIsEdited = true;
+        })
+      }
     });
-
-    this.updateContactForm.valueChanges.subscribe(values => {
-      this.formIsEdited = true;
-    })
   }
 
   submitForm() {
