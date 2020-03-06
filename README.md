@@ -29,4 +29,4 @@ Did you know that we recently released [Ionic 5 Full Starter App PRO](https://io
 
 It is also a PWA and has a score of 100 in lighthouse. Try it both as a native app or as a full PWA on your mobile browser and **save yourself hundreds of hours of design and development**.
 
-<img src="https://s3-us-west-2.amazonaws.com/ionicthemes/cover_images/redesign/ionic5-full-starter-app.jpg"/>
+<img src="https://ionicthemes.s3-us-west-2.amazonaws.com/cover_images/redesign/ionic5-full-starter-app-pro.jpg"/>
