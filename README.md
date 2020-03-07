@@ -2,7 +2,7 @@
 Enjoy this free ionic 5 starter app showcasing some of the new features from Ionic 5
 
 ## About this ionic demo
-This repo is the code of an Ionic 5 starter app that we created as part of the post: **What's new in Ionic 5 - Migration and Free Starter*. In this post we explain how to take advantage of the new benefits from Ionic 5. We also describe the main changes and show you *how to migrate your applications from Ionic 4 to Ionic 5**. 
+This repo is the code of an Ionic 5 starter app that we created as part of the post: **[What's new in Ionic 5 - Migration and Free Starter](https://ionicthemes.com/tutorials/about/ionic5-tutorial-migration-and-starter). In this post we explain how to take advantage of the new benefits from Ionic 5. We also describe the main changes and show you how to migrate your applications from Ionic 4 to Ionic 5**. 
 
 ### Ionic CRUD Starter
 This repo is a Contacts CRUD ionic 5 starter app. This demo app includes some of the new Ionic 5 features such as **swipeable modals, collapsible headers, segments, animations, as well as, lists, reactive forms, and navigation examples.**
