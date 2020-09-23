@@ -14,7 +14,7 @@ export class UpdateContactPage implements OnInit {
   updateContactForm: FormGroup;
   formIsEdited: boolean = false;
 
-  @ViewChild('updateForm', { static: false }) updateForm: FormGroupDirective;
+  @ViewChild('updateForm') updateForm: FormGroupDirective;
 
   constructor(
     private dataService: DataService,

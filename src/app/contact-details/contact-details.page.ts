@@ -11,7 +11,7 @@ import { Animation } from '@ionic/core';
   styleUrls: ['./contact-details.page.scss'],
 })
 export class ContactDetailsPage implements OnInit, AfterViewInit {
-  @ViewChild('favIcon', { static: false, read: ElementRef }) favIcon: ElementRef;
+  @ViewChild('favIcon', { read: ElementRef }) favIcon: ElementRef;
 
   public contact: Contact;
   public favState = false;

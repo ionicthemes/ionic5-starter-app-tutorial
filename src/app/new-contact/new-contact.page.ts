@@ -12,7 +12,7 @@ import { DataService } from '../services/data.service';
 export class NewContactPage implements OnInit {
 
   createContactForm: FormGroup;
-  @ViewChild('createForm', { static: false }) createForm: FormGroupDirective;
+  @ViewChild('createForm') createForm: FormGroupDirective;
 
   constructor(
     private modalController: ModalController,
